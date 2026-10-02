@@ -31,21 +31,20 @@ fun estado0(a: Boolean, b: Boolean): Int {
 fun gestorEstado(a: Boolean, b: Boolean, estadoInicial: Int): Int {
     var estado = estadoInicial
 
-    if (a) {
+    if (a && estado == 1) {
         estado = estado2(a, b)
         println(estado)
 
-        val nuevoA = pedirBooleano("Introduce a (true/false): ")
-        val nuevoB = pedirBooleano("Introduce b (true/false): ")
 
-        if (nuevoB) {
-            println(estado4(nuevoA, nuevoB))
-            estado = estado1(nuevoA, nuevoB)
-            println(estado)
+    }
+     else if(estado == 2) {
+
+        if (b) {
+            println(estado4(a, b))
+            estado = estado1(a, b)
         } else {
-            println(estado3(nuevoA, nuevoB))
-            estado = estado0(nuevoA, nuevoB)
-            println(estado)
+            println(estado3(a, b))
+            estado = estado0(a, b)
         }
     }
 
@@ -59,5 +58,10 @@ fun main() {
     val b = pedirBooleano("Introduce b (true/false): ")
 
     estado = gestorEstado(a, b, estado)
+
+    val a2 = pedirBooleano("Introduce a (true/false): ")
+    val b2 = pedirBooleano("Introduce b (true/false): ")
+
+    estado = gestorEstado(a2, b2, estado)
     println("Estado final: $estado")
 }
